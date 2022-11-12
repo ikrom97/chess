@@ -1,0 +1,43 @@
+.rating-section {
+  margin-top: 24px;
+  margin-bottom: 32px;
+
+  @media (min-width: @medium) {
+    margin-top: 48px;
+    margin-bottom: 64px;
+  }
+}
+
+.rating-section__title {
+  .title-hr();
+  margin-bottom: 16px;
+
+  @media (min-width: @medium) {
+    margin-bottom: 32px;
+  }
+}
+
+.rating-section__button {
+  display: block;
+  width: max-content;
+  border: none;
+  background-color: transparent;
+  margin-top: 16px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+  cursor: pointer;
+
+  span {
+    color: @primary-color;
+  }
+
+  @media (min-width: @medium) {
+    margin-top: 32px;
+  }
+}
+
+.rating-section__button-icon {
+  margin-left: 8px;
+  transform: rotate(90deg);
+}

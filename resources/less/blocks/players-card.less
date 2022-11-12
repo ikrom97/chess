@@ -1,0 +1,93 @@
+.players-card {
+  display: flex;
+  border-radius: 8px;
+  background-color: @secondary-color;
+  overflow: hidden;
+  height: 184px;
+}
+
+.players-card__image {
+  object-fit: cover;
+  height: 184px;
+  width: 112px;
+}
+
+.players-card__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px;
+  padding-right: 0;
+  flex-grow: 1;
+}
+
+.players-card__name {
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: @primary-color;
+
+  span {
+    color: @font-color;
+  }
+}
+
+.players-card__details {
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.players-card__detail {
+  font-size: 14px;
+
+  &:not(:last-child) {
+    margin-right: 4px;
+    margin-bottom: 4px;
+    flex-grow: 1;
+    background-color: @basic-white;
+    border-radius: 8px;
+    padding: 8px;
+  }
+}
+
+.players-card__detail-definition {
+  margin: 0;
+  color: @primary-color;
+  font-weight: 600;
+}
+
+.players-card__country {
+  border-radius: 8px 0 0 8px;
+}
+
+@media (min-width: @medium) {
+  .players-card__image {
+    width: 120px;
+  }
+
+  .players-card__inner {
+    padding: 16px;
+    padding-right: 0;
+  }
+
+  .players-card__name {
+    margin-bottom: 16px;
+  }
+
+  .players-card__detail {
+    font-size: 14px;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+      margin-bottom: 8px;
+      flex-grow: 1;
+      background-color: @basic-white;
+      border-radius: 8px;
+      padding: 8px;
+    }
+  }
+}

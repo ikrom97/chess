@@ -1,0 +1,40 @@
+.swiper {
+  max-width: calc(100vw - 32px);
+  padding-bottom: 24px !important;
+
+  div.swiper-scrollbar {
+    height: 1px;
+    background-color: @secondary-color;
+  }
+
+  div.swiper-scrollbar-drag {
+    height: 7px;
+    top: -3px;
+    background-color: @primary-color;
+    min-width: 40px;
+  }
+}
+
+@media (min-width: @small) {
+  .swiper {
+    max-width: calc(100vw - 48px);
+  }
+}
+
+@media (min-width: @medium) {
+  .swiper {
+    max-width: calc(100vw - 64px);
+  }
+}
+
+@media (min-width: @large) {
+  .swiper {
+    max-width: calc(100vw - 80px);
+  }
+}
+
+@media (min-width: @x-large) {
+  .swiper {
+    max-width: calc(100vw - 96px);
+  }
+}

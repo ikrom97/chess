@@ -1,0 +1,64 @@
+.tournaments-card {
+  border-radius: 8px;
+  background-color: @secondary-color;
+
+  &--new {
+    background-color: @primary-color;
+    color: @basic-white;
+  }
+}
+
+.tournaments-card__image {
+  border-radius: 8px 8px 0 0;
+  width: 100%;
+  height: auto;
+}
+
+.tournaments-card__inner {
+  padding: 24px 16px 24px 24px;
+}
+
+.tournaments-card__time {
+  color: @primary-color;
+
+  .tournaments-card--new & {
+    color: @font-color;
+  }
+}
+
+.tournaments-card__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: pre-line;
+}
+
+.tournaments-card__description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-top: 16px;
+
+  *:first-child {
+    margin-top: 0;
+  }
+}
+
+.tournaments-card__more {
+  .button();
+  margin-top: 16px;
+
+  .tournaments-card--new & {
+    background-color: @secondary-color;
+    color: @font-color;
+  }
+}

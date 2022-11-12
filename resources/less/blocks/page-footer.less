@@ -1,0 +1,157 @@
+.page-footer {
+  background-color: @brand-dark;
+  color: @basic-white;
+}
+
+.page-footer__links {
+  text-align: center;
+  max-width: max-content;
+  margin-top: 24px;
+  margin-right: auto;
+  margin-bottom: 32px;
+  margin-left: auto;
+}
+
+.page-footer__links-title {
+  font-weight: 600;
+  color: @primary-color;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.page-footer__links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-footer__details {
+  display: grid;
+  max-width: max-content;
+  margin-top: 24px;
+  margin-right: auto;
+  margin-bottom: 32px;
+  margin-left: auto;
+  gap: 16px;
+}
+
+.page-footer__detail {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin: 0;
+
+    &::first-line {
+      color: @primary-color;
+    }
+  }
+}
+
+.page-footer__detail-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  min-width: 42px;
+  height: 42px;
+  background-color: @basic-white;
+  color: @brand-dark;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.page-footer__copyright {
+  margin: 0;
+  padding: 16px;
+  background-color: @primary-color;
+  text-align: center;
+}
+
+@media (min-width: @small) {
+  .page-footer__container {
+    padding: 32px 0;
+  }
+
+  .page-footer__links {
+    margin-bottom: 32px;
+  }
+
+  .page-footer__details {
+    gap: 24px;
+  }
+
+  .page-footer__detail-icon {
+    margin-right: 16px;
+  }
+}
+
+@media (min-width: @medium) {
+  .page-footer__container {
+    padding: 40px 0;
+  }
+
+  .page-footer__links {
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .page-footer__links-list {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 24px;
+  }
+
+  .page-footer__details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+}
+
+@media (min-width: @large) {
+  .page-footer__container {
+    padding: 48px 0;
+  }
+
+  .page-footer__links {
+    margin-bottom: 48px;
+  }
+
+  .page-footer__links-list {
+    column-gap: 32px;
+  }
+
+  .page-footer__details {
+    gap: 32px;
+  }
+}
+
+@media (min-width: @x-large) {
+  .page-footer__container {
+    padding: 56px 0;
+  }
+
+  .page-footer__links {
+    margin-bottom: 56px;
+  }
+
+  .page-footer__links-list {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+
+@media (min-width: @x-x-large) {
+  .page-footer__container {
+    padding: 64px 0;
+  }
+
+  .page-footer__links {
+    margin-bottom: 64px;
+  }
+
+  .page-footer__links-list {
+    grid-template-columns: repeat(5, auto);
+  }
+}

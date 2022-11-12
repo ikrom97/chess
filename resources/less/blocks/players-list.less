@@ -1,0 +1,19 @@
+.players-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+
+  @media (min-width: @small) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  @media (min-width: @medium) {
+    gap: 24px;
+  }
+
+  @media (min-width: @x-large) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
