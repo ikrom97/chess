@@ -1,4 +1,6 @@
 {
-    "/js/app.js": "/js/app.js?id=e9c64facfcebd166dbad27640ad3d1ea",
-    "/css/style.min.css": "/css/style.min.css?id=ccc4cd41a0c7c55b7e0a4dbd1b8ce83f"
+    "/js/app.min.js": "/js/app.min.js?id=b28280ebe7037abd3c180460624cc734",
+    "/js/admin.min.js": "/js/admin.min.js?id=df1067f243d060c257441c5df9fa232d",
+    "/css/style.min.css": "/css/style.min.css?id=ccc4cd41a0c7c55b7e0a4dbd1b8ce83f",
+    "/css/admin.min.css": "/css/admin.min.css?id=26db412ad02a3d52c8629bfea931de87"
 }

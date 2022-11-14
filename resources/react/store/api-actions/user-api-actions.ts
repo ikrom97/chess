@@ -1,7 +1,9 @@
+import { AdminRoute } from './../../const';
+import { getToken } from './../../services/token';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { ApiRoute, AppRoute } from '../../const';
-import { dropToken, saveToken, Token } from '../../services/token';
+import { ApiRoute } from '../../const';
+import { dropToken, saveToken } from '../../services/token';
 import { AppDispatch, State } from '../../types/state';
 import { redirectToRoute } from '../action';
 
@@ -11,7 +13,9 @@ export const checkAuth = createAsyncThunk<
   { dispatch: AppDispatch, state: State, extra: AxiosInstance }
 >(
   'user/checkAuth',
-  async (_arg, { extra: api }) => await api.get(ApiRoute.LOGIN),
+  async (_arg, { extra: api }) => {
+    await api.get(`${ApiRoute.LOGIN}?token=${getToken()}`);
+  },
 );
 
 export const loginAction = createAsyncThunk<
@@ -21,9 +25,10 @@ export const loginAction = createAsyncThunk<
 >(
   'user/login',
   async ({ email, password }, { dispatch, extra: api }) => {
-    const { data } = await api.post<Token>(ApiRoute.LOGIN, { email, password });
-    saveToken(data);
-    dispatch(redirectToRoute(AppRoute.MAIN));
+    const { data } = await api.post(ApiRoute.LOGIN, { email, password });
+
+    saveToken(data.token);
+    dispatch(redirectToRoute(AdminRoute.MAIN));
   },
 );
 
@@ -34,7 +39,7 @@ export const logoutAction = createAsyncThunk<
 >(
   'user/logout',
   async (_arg, { extra: api }) => {
-    await api.delete(ApiRoute.LOGIN);
+    await api.delete(`${ApiRoute.LOGIN}?token=${getToken()}`);
     dropToken();
   },
 );

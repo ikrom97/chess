@@ -9,8 +9,13 @@ export enum AppRoute {
   ARTICLES = '/articles',
   ARTICLES_SELECTED = '/articles/:slug',
   CONTACTS = '/contacts',
-  LOGIN = '/login',
   NOT_FOUND = '*',
+}
+
+export enum AdminRoute {
+  MAIN = '/admin',
+  LOGIN = '/admin/login',
+  TOURNAMENTS = '/admin/tournaments',
 }
 
 export enum ApiRoute {
@@ -50,7 +55,7 @@ export enum Viewport {
 }
 
 export enum AuthorizationStatus {
-  Auth = 'AUTH',
-  NoAuth = 'NO_AUTH',
-  Unknown = 'UNKNOWN',
+  AUTH = 'authorized',
+  NO_AUTH = 'unauthorized',
+  UNKNOWN = 'unknown',
 }

@@ -16,8 +16,17 @@ mix.browserSync({
  |
  */
 
-mix.ts('resources/react/index.tsx', 'public/js/app.js').react()
+mix.ts('resources/react/index.tsx', 'public/js/app.min.js').react()
+  .ts('resources/react/admin/index.tsx', 'public/js/admin.min.js').react()
   .less('resources/less/style.less', 'public/css/style.min.css')
+  .sourceMaps()
+  .webpackConfig({
+    devtool: 'source-map'
+  })
+  .options({
+    processCssUrls: false
+  })
+  .less('resources/less/admin/style.less', 'public/css/admin.min.css')
   .sourceMaps()
   .webpackConfig({
     devtool: 'source-map'

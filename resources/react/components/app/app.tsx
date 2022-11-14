@@ -3,20 +3,23 @@ import browserHistory from '../../browser-history';
 import { AppRoute } from '../../const';
 import AboutScreen from '../../screens/about-screen/about-screen';
 import ArticlesScreen from '../../screens/articles-screen/articles-screen';
-import ArticlesSelectedScreen from '../../screens/articles-selected-screen/articles-selected-screen';
+import ArticlesSelectedScreen
+  from '../../screens/articles-selected-screen/articles-selected-screen';
 import ContactsScreen from '../../screens/contacts-screen/contacts-screen';
-import Layout from '../../screens/layout/layout';
+import Layout from '../layout/layout';
 import MainScreen from '../../screens/main-screen/main-screen';
 import NewsScreen from '../../screens/news-screen/news-screen';
 import NewsSelectedScreen from '../../screens/news-selected-screen/news-selected-screen';
-import NotFoundScreen from '../../screens/not-found-screen/not-found-screen';
 import RatingsScreen from '../../screens/ratings-screen/ratings-screen';
 import TournamentsScreen from '../../screens/tournaments-screen/tournaments-screen';
-import TournamentsSelectedScreen from '../../screens/tournaments-selected-screen/tournaments-selected-screen';
+import TournamentsSelectedScreen
+  from '../../screens/tournaments-selected-screen/tournaments-selected-screen';
 import HistoryRouter from '../history-route/history-route';
 import ScrollToTop from '../scroll-to-top/scroll-to-top';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
+import NotFoundScreen from '../../screens/not-found-screen/not-found-screen';
+
 
 function App(): JSX.Element {
   return (

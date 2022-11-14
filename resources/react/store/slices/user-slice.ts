@@ -7,7 +7,7 @@ type UserSlice = {
 }
 
 const initialState: UserSlice = {
-  authorizationStatus: AuthorizationStatus.Unknown,
+  authorizationStatus: AuthorizationStatus.UNKNOWN,
 };
 
 export const userSlice = createSlice({
@@ -17,19 +17,19 @@ export const userSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(checkAuth.fulfilled, (state) => {
-        state.authorizationStatus = AuthorizationStatus.Auth;
+        state.authorizationStatus = AuthorizationStatus.AUTH;
       })
       .addCase(checkAuth.rejected, (state) => {
-        state.authorizationStatus = AuthorizationStatus.NoAuth;
+        state.authorizationStatus = AuthorizationStatus.NO_AUTH;
       })
       .addCase(loginAction.fulfilled, (state) => {
-        state.authorizationStatus = AuthorizationStatus.Auth;
+        state.authorizationStatus = AuthorizationStatus.AUTH;
       })
       .addCase(loginAction.rejected, (state) => {
-        state.authorizationStatus = AuthorizationStatus.NoAuth;
+        state.authorizationStatus = AuthorizationStatus.NO_AUTH;
       })
       .addCase(logoutAction.fulfilled, (state) => {
-        state.authorizationStatus = AuthorizationStatus.NoAuth;
+        state.authorizationStatus = AuthorizationStatus.NO_AUTH;
       });
   },
 });

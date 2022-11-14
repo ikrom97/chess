@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('{path}', function () {
+  if (substr(request('path'), 0, 5) === 'admin') {
+    return view('admin');
+  }
   return view('index');
 })->where('path', '([A-z\d\-\/_.]+)?');

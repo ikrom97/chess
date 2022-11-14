@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
-import PageFooter from '../../components/UI/page-footer/page-footer';
-import PageHeader from '../../components/UI/page-header/page-header';
+import PageFooter from '../UI/page-footer/page-footer';
+import PageHeader from '../UI/page-header/page-header';
 import { Outlet } from 'react-router-dom';
 
 function Layout(): JSX.Element {

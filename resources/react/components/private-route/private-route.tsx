@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AdminRoute, AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { getAuthorizationStatus } from '../../store/selectors/user-selector';
 
@@ -12,9 +12,9 @@ function PrivateRoute(props: PrivateRouteProps): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return (
-    authorizationStatus === AuthorizationStatus.Auth
+    authorizationStatus === AuthorizationStatus.AUTH
       ? children
-      : <Navigate to={AppRoute.LOGIN} />
+      : <Navigate to={AdminRoute.LOGIN} />
   );
 }
 
