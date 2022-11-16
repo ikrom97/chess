@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { fetchLastNews } from '../../../store/api-actions/news-api-actions';
 import { getLastNews, getLastNewsLoadedStatus } from '../../../store/selectors/news-selector';
 import SwiperCore, { Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import NewsCard from '../../../components/news-card/news-card';
+import { fetchNews } from '../../../store/api-actions/news-api-actions';
+import { setLastNews } from '../../../store/slices/news-slice';
 
 function LastNews(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -14,7 +15,17 @@ function LastNews(): JSX.Element {
   SwiperCore.use([Scrollbar]);
 
   useEffect(() => {
-    !isNewsLoaded && dispatch(fetchLastNews());
+    if (!isNewsLoaded) {
+      dispatch(fetchNews({
+        orderby: 'date',
+        ordertype: 'desc',
+        count: 10,
+        page: 1,
+        onSuccess(data) {
+          dispatch(setLastNews(data.news));
+        },
+      }));
+    }
   }, [dispatch, isNewsLoaded]);
 
   return (

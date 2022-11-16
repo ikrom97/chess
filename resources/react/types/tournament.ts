@@ -1,3 +1,5 @@
+import { Pagination } from './pagination';
+
 type Ticket = {
   address: string;
   tel1: string;
@@ -17,3 +19,16 @@ export type Tournament = {
 }
 
 export type Tournaments = Tournament[];
+
+export type TournamentData = {
+  slug: string;
+  onSuccess: (tournament: Tournament) => void;
+};
+
+export type TournamentsData = {
+  orderby: string;
+  ordertype: string;
+  count: number;
+  page: number;
+  onSuccess: (data: { tournaments: Tournaments, pagination: Pagination }) => void;
+};

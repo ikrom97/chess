@@ -1,3 +1,4 @@
+import { NewsData } from './../../types/news';
 import { adaptNewsArrayToClient, adaptNewsToClient } from './../../adapters/news-adapter';
 import { generatePath } from 'react-router-dom';
 import { ApiRoute } from '../../const';
@@ -5,33 +6,23 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { News } from '../../types/news';
 import { AppDispatch, State } from '../../types/state';
+import { adaptPaginationToClient } from '../../adapters/pagination-adapter';
 
-export const fetchLastNews = createAsyncThunk<
-  News[],
-  undefined,
+export const fetchNews = createAsyncThunk<
+  void,
+  NewsData,
   { dispatch: AppDispatch, state: State, extra: AxiosInstance }
 >(
-  'news/fetchLastNews',
-  async (_arg, { extra: api }) => {
-    const { data } = await api.get(ApiRoute.NEWS);
+  'news/fetchNews',
+  async ({ orderby, ordertype, count, page, onSuccess }, { extra: api }) => {
+    const { data } = await api.get(
+      `${ApiRoute.NEWS}?orderby=${orderby}&ordertype=${ordertype}&count=${count}&page=${page}`
+    );
 
-    return adaptNewsArrayToClient(data);
-  }
-);
-
-export const paginateNews = createAsyncThunk<
-  { news: News[], pagesCount: number },
-  { currentPage: number },
-  { dispatch: AppDispatch, state: State, extra: AxiosInstance }
->(
-  'news/paginateNews',
-  async ({ currentPage }, { extra: api }) => {
-    const { data } = await api.get(`${ApiRoute.NEWS}?page=${currentPage}`);
-
-    return {
+    onSuccess({
       news: adaptNewsArrayToClient(data.data),
-      pagesCount: data.last_page,
-    };
+      pagination: adaptPaginationToClient(data),
+    });
   }
 );
 

@@ -1,6 +1,8 @@
-function MainScreen() : JSX.Element {
+function MainScreen(): JSX.Element {
   return (
-    <h1>Main Screen</h1>
+    <main className="page__content">
+      <h1>Main Screen</h1>
+    </main>
   );
 }
 

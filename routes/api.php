@@ -27,6 +27,8 @@ Route::get('news/{slug}', [NewsController::class, 'show']);
 Route::get('players', [PlayersController::class, 'index']);
 
 Route::get('tournaments', [TournamentController::class, 'index']);
+Route::get('tournaments/upcoming', [TournamentController::class, 'upcoming']);
+Route::get('tournaments/previous', [TournamentController::class, 'previous']);
 Route::get('tournaments/{slug}', [TournamentController::class, 'show']);
 
 Route::get('login', [AuthController::class, 'check']);

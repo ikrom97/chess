@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import TournamentCard from '../../../components/tournament-card/tournament-card';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { fetchLastTournaments } from '../../../store/api-actions/tournaments-api-actions';
 import {
   getLastTournaments,
   getLastTournamentsLoadedStatus
 } from '../../../store/selectors/tournaments-selector';
 import SwiperCore, { Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { fetchPreviousTournaments } from '../../../store/api-actions/tournaments-api-actions';
+import { setLastTournaments } from '../../../store/slices/tournaments-slice';
 
 function LastTournaments(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -17,7 +18,17 @@ function LastTournaments(): JSX.Element {
   SwiperCore.use([Scrollbar]);
 
   useEffect(() => {
-    !isTournamentsLoaded && dispatch(fetchLastTournaments());
+    if (!isTournamentsLoaded) {
+      dispatch(fetchPreviousTournaments({
+        orderby: 'date',
+        ordertype: 'desc',
+        count: 10,
+        page: 1,
+        onSuccess(data) {
+          dispatch(setLastTournaments(data.tournaments));
+        },
+      }));
+    }
   }, [dispatch, isTournamentsLoaded]);
 
   return (

@@ -13,6 +13,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { getAuthorizationStatus } from '../../../store/selectors/user-selector';
 import { redirectToRoute } from '../../../store/action';
+import NewsScreen from '../../screens/news-screen/news-screen';
+import ArticlesScreen from '../../screens/articles-screen/articles-screen';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -32,6 +34,10 @@ function App(): JSX.Element {
           <Route path={AdminRoute.MAIN} element={<MainScreen />} />
 
           <Route path={AdminRoute.TOURNAMENTS} element={<TournamentsScreen />} />
+
+          <Route path={AdminRoute.NEWS} element={<NewsScreen />} />
+
+          <Route path={AdminRoute.ARTICLES} element={<ArticlesScreen />} />
         </Route>
 
         <Route path={AdminRoute.LOGIN} element={<LoginScreen />} />

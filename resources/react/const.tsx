@@ -16,6 +16,11 @@ export enum AdminRoute {
   MAIN = '/admin',
   LOGIN = '/admin/login',
   TOURNAMENTS = '/admin/tournaments',
+  TOURNAMENTS_SHOW = '/admin/tournaments/show',
+  NEWS = '/admin/news',
+  NEWS_SHOW = '/admin/news/show',
+  ARTICLES = '/admin/articles',
+  ARTICLES_SHOW = '/admin/articles/show',
 }
 
 export enum ApiRoute {
@@ -25,12 +30,15 @@ export enum ApiRoute {
   NEWS_SELECTED = '/api/news/:slug',
   PLAYERS = '/api/players',
   TOURNAMENTS = '/api/tournaments',
+  TOURNAMENTS_UPCOMING = '/api/tournaments/upcoming',
+  TOURNAMENTS_PREVIOUS = '/api/tournaments/previous',
   TOURNAMENTS_SELECTED = '/api/tournaments/:slug',
+
   LOGIN = '/api/login',
+  ADMIN_TOURNAMENTS = '/api/admin/tournaments',
 }
 
 export enum SliceName {
-  ARTICLES = 'articles',
   NEWS = 'news',
   PLAYERS = 'players',
   TOURNAMENTS = 'tournaments',
@@ -46,13 +54,12 @@ export const NavigationItems = [
   { url: AppRoute.CONTACTS, text: 'Контакты' },
 ];
 
-export enum Viewport {
-  SMALL = 576,
-  MEDIUM = 768,
-  LARGE = 992,
-  X_LARGE = 1200,
-  X_X_LARGE = 1400,
-}
+export const AdminNavigations = [
+  { url: AdminRoute.MAIN, text: 'Главная' },
+  { url: AdminRoute.TOURNAMENTS, text: 'Турниры' },
+  { url: AdminRoute.NEWS, text: 'Новости' },
+  { url: AdminRoute.ARTICLES, text: 'Статьи' },
+];
 
 export enum AuthorizationStatus {
   AUTH = 'authorized',

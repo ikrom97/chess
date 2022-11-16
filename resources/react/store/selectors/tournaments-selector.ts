@@ -8,12 +8,6 @@ export const getLastTournaments = (state: State): Tournaments =>
 export const getLastTournamentsLoadedStatus = (state: State): boolean =>
   state[SliceName.TOURNAMENTS].isLastTournamentsLoaded;
 
-export const getPaginatedTournaments = (state: State): Tournaments =>
-  state[SliceName.TOURNAMENTS].paginatedTournaments;
-
-export const getTournamentPagesCount = (state: State): number =>
-  state[SliceName.TOURNAMENTS].pagesCount;
-
 export const getUpcomingTournaments = (state: State): Tournaments =>
   state[SliceName.TOURNAMENTS].upcomingTournaments;
 

@@ -1,24 +1,27 @@
 import { generatePath } from 'react-router-dom';
 import { AxiosInstance } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Article, Articles } from '../../types/article';
+import { Article, ArticlesData } from '../../types/article';
 import { AppDispatch, State } from '../../types/state';
 import { ApiRoute } from '../../const';
 import { adaptArticlesToClient, adaptArticleToClient } from '../../adapters/article-adapter';
+import { adaptPaginationToClient } from '../../adapters/pagination-adapter';
 
-export const paginateArticles = createAsyncThunk<
-  { articles: Articles, pagesCount: number },
-  { currentPage: number },
+export const fetchArticles = createAsyncThunk<
+  void,
+  ArticlesData,
   { dispatch: AppDispatch, state: State, extra: AxiosInstance }
 >(
-  'articles/paginateArticles',
-  async ({ currentPage }, { extra: api }) => {
-    const { data } = await api.get(`${ApiRoute.ARTICLES}?page=${currentPage}`);
+  'articles/fetchArticles',
+  async ({ orderby, ordertype, count, page, onSuccess }, { extra: api }) => {
+    const { data } = await api.get(
+      `${ApiRoute.ARTICLES}?orderby=${orderby}&ordertype=${ordertype}&count=${count}&page=${page}`
+    );
 
-    return {
+    onSuccess({
       articles: adaptArticlesToClient(data.data),
-      pagesCount: data.last_page,
-    };
+      pagination: adaptPaginationToClient(data),
+    });
   }
 );
 

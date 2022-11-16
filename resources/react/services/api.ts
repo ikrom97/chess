@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosError, AxiosInstance} from 'axios';
 import { toast } from 'react-toastify';
 
 const REQUEST_TIMEOUT = 5000;
@@ -6,12 +6,6 @@ const REQUEST_TIMEOUT = 5000;
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({
     timeout: REQUEST_TIMEOUT,
-  });
-
-  api.interceptors.request.use((config: AxiosRequestConfig) => {
-    config.headers['viewport'] = window.screen.width;
-
-    return config;
   });
 
   api.interceptors.response.use(
@@ -23,7 +17,7 @@ export const createAPI = (): AxiosInstance => {
     },
     (error: AxiosError) => {
       if (error.response) {
-        toast.warn(error.response.data.error);
+        toast.error(error.response.data.error);
       }
 
       throw error;

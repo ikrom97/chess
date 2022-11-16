@@ -10,49 +10,31 @@ class TournamentController extends Controller
 {
   public function index(Request $request)
   {
+    return Tournament::orderBy($request->orderby, $request->ordertype)
+      ->paginate($request->count);
+  }
+
+  public function previous(Request $request)
+  {
     $currentDate = new DateTime();
 
-    $viewport = $request->header('viewport');
+    return Tournament::where('date', '<', $currentDate)
+      ->orderBy($request->orderby, $request->ordertype)
+      ->paginate($request->count);
+  }
 
-    switch (true) {
-      case $viewport > 1391:
-        $items = 8;
-        break;
+  public function upcoming(Request $request)
+  {
+    $currentDate = new DateTime();
 
-      case $viewport > 1043:
-        $items = 9;
-        break;
-
-      default:
-        $items = 8;
-        break;
-    }
-
-    if ($request->filter === 'upcoming') {
-      return Tournament::select('id', 'image', 'thumb_image', 'date', 'title', 'content', 'slug')
-        ->where('date', '>', $currentDate)
-        ->orderBy('date', 'desc')
-        ->get();
-    }
-
-    if ($request->page) {
-      return Tournament::select('id', 'image', 'thumb_image', 'date', 'title', 'content', 'slug')
-        ->where('date', '<', $currentDate)
-        ->orderBy('date', 'desc')
-        ->paginate($items);
-    }
-
-    return Tournament::select('id', 'image', 'thumb_image', 'date', 'title', 'content', 'slug')
-      ->where('date', '<', $currentDate)
-      ->orderBy('date', 'desc')
-      ->take(10)
+    return Tournament::where('date', '>', $currentDate)
+      ->orderBy($request->orderby, $request->ordertype)
       ->get();
   }
 
   public function show($slug)
   {
     return Tournament::with('ticket')
-      ->select('id', 'image', 'thumb_image', 'date', 'title', 'content', 'slug')
       ->where('slug', $slug)
       ->first();
   }

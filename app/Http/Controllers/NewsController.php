@@ -3,49 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
-use DateTime;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
   public function index(Request $request)
   {
-    $currentDate = new DateTime();
-
-    $viewport = $request->header('viewport');
-
-    switch (true) {
-      case $viewport > 1391:
-        $items = 16;
-        break;
-
-      case $viewport > 1043:
-        $items = 12;
-        break;
-
-      default:
-        $items = 8;
-        break;
-    }
-
-    if ($request->page) {
-      return News::select('id', 'image', 'thumb_image', 'date', 'title', 'content', 'slug')
-        ->where('date', '<', $currentDate)
-        ->orderBy('date', 'desc')
-        ->paginate($items);
-    }
-
-    return News::select('id', 'image', 'thumb_image', 'date', 'title', 'content', 'slug')
-      ->where('date', '<', $currentDate)
-      ->orderBy('date', 'desc')
-      ->take(10)
-      ->get();
+    return News::orderBy($request->orderby, $request->ordertype)
+      ->paginate($request->count);
   }
 
   public function show($slug)
   {
-    return News::select('id', 'image', 'thumb_image', 'date', 'title', 'content', 'slug')
-      ->where('slug', $slug)
-      ->first();
+    return News::where('slug', $slug)->first();
   }
 }

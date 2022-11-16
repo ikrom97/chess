@@ -1,3 +1,5 @@
+import { Pagination } from './pagination';
+
 export type Article = {
   id: number;
   image: string;
@@ -9,3 +11,11 @@ export type Article = {
 }
 
 export type Articles = Article[]
+
+export type ArticlesData = {
+  orderby: string;
+  ordertype: string;
+  count: number;
+  page: number;
+  onSuccess: (data: { articles: Article[], pagination: Pagination }) => void;
+}

@@ -1,23 +1,29 @@
 import { Fragment, useEffect, useState } from 'react';
 import NewsCard from '../../../components/news-card/news-card';
 import Pagination from '../../../components/pagination/pagination';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { paginateNews } from '../../../store/api-actions/news-api-actions';
-import {
-  getNewsPagesCount,
-  getPaginatedNews,
-} from '../../../store/selectors/news-selector';
+import { useAppDispatch} from '../../../hooks';
+import { fetchNews } from '../../../store/api-actions/news-api-actions';
+import { News } from '../../../types/news';
 
 function NewsPagination(): JSX.Element {
   const dispatch = useAppDispatch();
-  const news = useAppSelector(getPaginatedNews);
-  const pagesCount = useAppSelector(getNewsPagesCount);
+  const [news, setNews] = useState<News[]>([]);
   const params = new URLSearchParams(window.location.search);
   const page = params.get('page') ? Number(params.get('page')) : 1;
+  const [pagesCount, setPagesCount] = useState<number>(page);
   const [currentPage, setCurrentPage] = useState<number>(page);
 
   useEffect(() => {
-    dispatch(paginateNews({ currentPage }));
+    dispatch(fetchNews({
+      orderby: 'date',
+      ordertype: 'desc',
+      count: 16,
+      page: currentPage,
+      onSuccess(data) {
+        setNews(data.news);
+        setPagesCount(data.pagination.lastPage);
+      },
+    }));
   }, [currentPage, dispatch]);
 
   return (

@@ -28,7 +28,7 @@ class AuthController extends Controller
       return response(['error' => 'Вы не вошли в систему или у вас нет доступа к этой странице.'], 401);
     }
 
-    return response(['message' => 'Авторизованный пользователь'], 200);
+    return response([], 200);
   }
 
   /**

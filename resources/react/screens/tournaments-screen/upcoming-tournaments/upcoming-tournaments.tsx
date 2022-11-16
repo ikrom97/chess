@@ -2,7 +2,10 @@ import { useEffect } from 'react';
 import TournamentCard from '../../../components/tournament-card/tournament-card';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { fetchUpcomingTournaments } from '../../../store/api-actions/tournaments-api-actions';
-import { getUpcomingTournaments, getUpcomingTournamentsLoadedStatus } from '../../../store/selectors/tournaments-selector';
+import {
+  getUpcomingTournaments,
+  getUpcomingTournamentsLoadedStatus,
+} from '../../../store/selectors/tournaments-selector';
 
 function UpcomingTournaments(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -10,7 +13,9 @@ function UpcomingTournaments(): JSX.Element {
   const isTournamensLoaded = useAppSelector(getUpcomingTournamentsLoadedStatus);
 
   useEffect(() => {
-    !isTournamensLoaded && dispatch(fetchUpcomingTournaments());
+    if (!isTournamensLoaded) {
+      dispatch(fetchUpcomingTournaments({orderby: 'date', ordertype: 'asc'}));
+    }
   }, [dispatch, isTournamensLoaded]);
 
   return (
