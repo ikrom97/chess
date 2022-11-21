@@ -14,7 +14,7 @@ function UpcomingTournaments(): JSX.Element {
 
   useEffect(() => {
     if (!isTournamensLoaded) {
-      dispatch(fetchUpcomingTournaments({orderby: 'date', ordertype: 'asc'}));
+      dispatch(fetchUpcomingTournaments({sort: 'date', order: 'asc'}));
     }
   }, [dispatch, isTournamensLoaded]);
 
