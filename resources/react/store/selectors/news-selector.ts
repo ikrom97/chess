@@ -7,9 +7,3 @@ export const getLastNews = (state: State): News[] =>
 
 export const getLastNewsLoadedStatus = (state: State): boolean =>
   state[SliceName.NEWS].isLastNewsLoaded;
-
-export const getPaginatedNews = (state: State): News[] =>
-  state[SliceName.NEWS].paginatedNews;
-
-export const getNewsPagesCount = (state: State): number =>
-  state[SliceName.NEWS].pagesCount;

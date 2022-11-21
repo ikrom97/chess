@@ -13,9 +13,9 @@ export const fetchTournaments = createAsyncThunk<
   { dispatch: AppDispatch, state: State, extra: AxiosInstance }
 >(
   'tournaments/fetchTournaments',
-  async ({ orderby, ordertype, count, page, onSuccess }, { extra: api }) => {
+  async ({ sort, order, count, page, keyword, onSuccess }, { extra: api }) => {
     const { data } = await api.get(
-      `${ApiRoute.TOURNAMENTS}?orderby=${orderby}&ordertype=${ordertype}&count=${count}&page=${page}`
+      `${ApiRoute.TOURNAMENTS}?sort=${sort}&order=${order}&count=${count}&page=${page}&keyword=${keyword ?? ''}`
     );
 
     onSuccess({
@@ -31,9 +31,9 @@ export const fetchPreviousTournaments = createAsyncThunk<
   { dispatch: AppDispatch, state: State, extra: AxiosInstance }
 >(
   'tournaments/fetchPreviousTournaments',
-  async ({ orderby, ordertype, count, page, onSuccess }, { extra: api }) => {
+  async ({ sort, order, count, page, onSuccess }, { extra: api }) => {
     const { data } = await api.get(
-      `${ApiRoute.TOURNAMENTS_PREVIOUS}?orderby=${orderby}&ordertype=${ordertype}&count=${count}&page=${page}`
+      `${ApiRoute.TOURNAMENTS_PREVIOUS}?sort=${sort}&order=${order}&count=${count}&page=${page}`
     );
 
     onSuccess({
@@ -45,13 +45,13 @@ export const fetchPreviousTournaments = createAsyncThunk<
 
 export const fetchUpcomingTournaments = createAsyncThunk<
   Tournaments,
-  { orderby: string, ordertype: string },
+  { sort: string, order: string },
   { dispatch: AppDispatch, state: State, extra: AxiosInstance }
 >(
   'tournaments/fetchUpcomingTournaments',
-  async ({ orderby, ordertype }, { extra: api }) => {
+  async ({ sort, order }, { extra: api }) => {
     const { data } = await api.get(
-      `${ApiRoute.TOURNAMENTS_UPCOMING}?orderby=${orderby}&ordertype=${ordertype}`
+      `${ApiRoute.TOURNAMENTS_UPCOMING}?sort=${sort}&order=${order}`
     );
     const tournaments = adaptTournamentsToClient(data);
 

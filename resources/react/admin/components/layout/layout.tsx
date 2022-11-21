@@ -9,65 +9,63 @@ function Layout(): JSX.Element {
   const location = useLocation();
   const setClassName = (url: AdminRoute): string =>
     location.pathname.includes(url)
-      ? 'main-navigation__item main-navigation__item--current'
-      : 'main-navigation__item';
+      ? 'dashboard__item dashboard__item--current'
+      : 'dashboard__item';
 
   return (
     <Fragment>
-      <aside className="page__sidebar">
-        <nav className="main-navigation">
-          <img
-            className="main-logo"
-            src="images/logo-icon.webp"
-            width={117}
-            height={116}
-            alt="Логотип федерации шахмат Таджикистана"
-          />
+      <aside className="dashboard">
+        <img
+          className="dashboard__image"
+          src="images/logo-icon.webp"
+          width={117}
+          height={116}
+          alt="Логотип федерации шахмат Таджикистана"
+        />
 
-          <ul className="main-navigation__list">
-            {AdminNavigations.map(({ url, text }) => {
-              if (url === AdminRoute.MAIN) {
-                if (location.pathname === url) {
-                  return (
-                    <li key={url} className="main-navigation__item main-navigation__item--current">
-                      <span className="main-navigation__link">
-                        {text}
-                      </span>
-                    </li>);
-                }
+        <ul className="dashboard__list">
+          {AdminNavigations.map(({ url, text }) => {
+            if (url === AdminRoute.MAIN) {
+              if (location.pathname === url) {
                 return (
-                  <li key={url} className="main-navigation__item">
-                    <Link className="main-navigation__link" to={url}>
-                      {text}
-                    </Link>
-                  </li>
-                );
-              }
-              return (
-                <li key={url} className={setClassName(url)}>
-                  {location.pathname === url
-                    ?
-                    <span className="main-navigation__link">
+                  <li key={url} className="dashboard__item dashboard__item--current">
+                    <span className="dashboard__link">
                       {text}
                     </span>
-                    :
-                    <Link className="main-navigation__link" to={url}>
-                      {text}
-                    </Link>}
-                </li>);
-            })}
+                  </li>);
+              }
+              return (
+                <li key={url} className="dashboard__item">
+                  <Link className="dashboard__link" to={url}>
+                    {text}
+                  </Link>
+                </li>
+              );
+            }
+            return (
+              <li key={url} className={setClassName(url)}>
+                {location.pathname === url
+                  ?
+                  <span className="dashboard__link">
+                    {text}
+                  </span>
+                  :
+                  <Link className="dashboard__link" to={url}>
+                    {text}
+                  </Link>}
+              </li>);
+          })}
 
-            <li className="main-navigation__item">
-              <button
-                className="main-navigation__link"
-                type="button"
-                onClick={() => dispatch(logoutAction())}
-              >
-                Выйти
-              </button>
-            </li>
-          </ul>
-        </nav>
+          <li className="dashboard__item">
+            <button
+              className="dashboard__link"
+              type="button"
+              onClick={() => dispatch(logoutAction())}
+            >
+              Выйти
+            </button>
+          </li>
+        </ul>
       </aside>
 
       <Outlet />

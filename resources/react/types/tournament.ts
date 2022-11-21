@@ -26,9 +26,10 @@ export type TournamentData = {
 };
 
 export type TournamentsData = {
-  orderby: string;
-  ordertype: string;
+  sort: string;
+  order: string;
   count: number;
   page: number;
+  keyword?: string;
   onSuccess: (data: { tournaments: Tournaments, pagination: Pagination }) => void;
 };

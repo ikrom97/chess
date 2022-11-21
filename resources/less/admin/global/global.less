@@ -3,8 +3,22 @@
 *::after {
   box-sizing: border-box;
   font-size: inherit;
+  font-family: inherit;
   color: inherit;
   line-height: inherit;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Segoe UI", "Arial", sans-serif;
+  color: lighten(@basic-black, 16%);
+  background-color: darken(@basic-white, 8%);
+  margin: 0;
+}
+
+main {
+  margin: 32px 0 320px 272px;
 }
 
 img {
@@ -14,4 +28,22 @@ img {
 
 a {
   text-decoration: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  min-height: 100vh;
 }

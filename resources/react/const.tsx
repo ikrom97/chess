@@ -55,7 +55,6 @@ export const NavigationItems = [
 ];
 
 export const AdminNavigations = [
-  { url: AdminRoute.MAIN, text: 'Главная' },
   { url: AdminRoute.TOURNAMENTS, text: 'Турниры' },
   { url: AdminRoute.NEWS, text: 'Новости' },
   { url: AdminRoute.ARTICLES, text: 'Статьи' },
@@ -66,3 +65,18 @@ export enum AuthorizationStatus {
   NO_AUTH = 'unauthorized',
   UNKNOWN = 'unknown',
 }
+
+export const EmptyPaginationData = {
+  currentPage: 0,
+  firstPageUrl: '',
+  from: 0,
+  lastPage: 0,
+  lastPageUrl: '',
+  links: [],
+  nextPageUrl: '',
+  path: '',
+  perPage: 0,
+  prevPageUrl: '',
+  to: 0,
+  total: 0,
+};

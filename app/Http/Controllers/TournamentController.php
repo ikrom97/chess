@@ -10,7 +10,15 @@ class TournamentController extends Controller
 {
   public function index(Request $request)
   {
-    return Tournament::orderBy($request->orderby, $request->ordertype)
+    $keyword = $request->keyword;
+    if ($keyword) {
+      return Tournament::orderBy($request->sort, $request->order)
+        ->where('title', 'like', '%' . $keyword . '%')
+        ->orWhere('content', 'like', '%' . $keyword . '%')
+        ->paginate($request->count);
+    }
+
+    return Tournament::orderBy($request->sort, $request->order)
       ->paginate($request->count);
   }
 
@@ -19,7 +27,7 @@ class TournamentController extends Controller
     $currentDate = new DateTime();
 
     return Tournament::where('date', '<', $currentDate)
-      ->orderBy($request->orderby, $request->ordertype)
+      ->orderBy($request->sort, $request->order)
       ->paginate($request->count);
   }
 
@@ -28,7 +36,7 @@ class TournamentController extends Controller
     $currentDate = new DateTime();
 
     return Tournament::where('date', '>', $currentDate)
-      ->orderBy($request->orderby, $request->ordertype)
+      ->orderBy($request->sort, $request->order)
       ->get();
   }
 

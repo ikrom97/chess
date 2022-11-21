@@ -11,7 +11,9 @@ function TournamentDetails(): JSX.Element {
   const isUpcomingTournamentsLoaded = useAppSelector(getUpcomingTournamentsLoadedStatus);
 
   useEffect(() => {
-    !isUpcomingTournamentsLoaded && dispatch(fetchUpcomingTournaments());
+    if (!isUpcomingTournamentsLoaded) {
+      dispatch(fetchUpcomingTournaments({ sort: 'date', order: 'asc' }));
+    }
   }, [dispatch, isUpcomingTournamentsLoaded]);
 
   return (

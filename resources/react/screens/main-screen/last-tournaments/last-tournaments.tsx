@@ -20,8 +20,8 @@ function LastTournaments(): JSX.Element {
   useEffect(() => {
     if (!isTournamentsLoaded) {
       dispatch(fetchPreviousTournaments({
-        orderby: 'date',
-        ordertype: 'desc',
+        sort: 'date',
+        order: 'desc',
         count: 10,
         page: 1,
         onSuccess(data) {

@@ -25,7 +25,9 @@ class AuthController extends Controller
     $user = auth()->user();
 
     if (!$user) {
-      return response(['error' => 'Вы не вошли в систему или у вас нет доступа к этой странице.'], 401);
+      return response([
+        'error' => 'Вы не вошли в систему или у вас нет доступа к этой странице.',
+      ], 401);
     }
 
     return response([], 200);
@@ -51,7 +53,9 @@ class AuthController extends Controller
     }
 
     if (!$token = auth()->attempt($credentials)) {
-      return response(['error' => 'Вы не вошли в систему или у вас нет доступа к этой странице.'], 401);
+      return response([
+        'error' => 'Вы не вошли в систему или у вас нет доступа к этой странице.',
+      ], 401);
     }
 
     return response([

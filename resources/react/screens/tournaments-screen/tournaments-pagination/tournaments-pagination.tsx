@@ -15,8 +15,8 @@ function TournamentsPagination(): JSX.Element {
 
   useEffect(() => {
     dispatch(fetchPreviousTournaments({
-      orderby: 'date',
-      ordertype: 'desc',
+      sort: 'date',
+      order: 'desc',
       count: 8,
       page: currentPage,
       onSuccess(data) {
