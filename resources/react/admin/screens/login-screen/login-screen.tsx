@@ -21,40 +21,40 @@ function LoginScreen(): JSX.Element {
   };
 
   return (
-    <div className="login-screen">
-      <form className="form form--small" onSubmit={handeFormSubmit}>
-        <div className="form__element">
-          <input
-            className="form__field"
-            type="text"
-            name="email"
-            placeholder="example@domain.com"
-            autoComplete="off"
-            required
-            value={email}
-            onChange={(evt) => setEmail(evt.target.value)}
-          />
-          <label className="form__label" htmlFor="email">Логин</label>
-        </div>
-        <div className="form__element">
-          <input
-            className="form__field"
-            type="password"
-            name="password"
-            placeholder="********"
-            required
-            value={password}
-            autoComplete="current-password"
-            onChange={(evt) => setPassword(evt.target.value)}
-          />
-          <label className="form__label" htmlFor="password">Пароль</label>
-        </div>
+    <form className="form form--small" onSubmit={handeFormSubmit}>
+      <div className="form__element">
+        <input
+          className="form__field"
+          id="email"
+          type="text"
+          name="email"
+          placeholder="example@domain.com"
+          autoComplete="off"
+          required
+          value={email}
+          onChange={(evt) => setEmail(evt.target.value)}
+        />
+        <label className="form__label" htmlFor="email">Логин</label>
+      </div>
+      <div className="form__element">
+        <input
+          className="form__field"
+          id="password"
+          type="password"
+          name="password"
+          placeholder="********"
+          required
+          value={password}
+          autoComplete="current-password"
+          onChange={(evt) => setPassword(evt.target.value)}
+        />
+        <label className="form__label" htmlFor="password">Пароль</label>
+      </div>
 
-        <div className="form__buttons">
-          <button className="form__button button" type="submit">Войти</button>
-        </div>
-      </form>
-    </div>
+      <div className="form__buttons">
+        <button className="form__button" type="submit">Войти</button>
+      </div>
+    </form>
   );
 }
 

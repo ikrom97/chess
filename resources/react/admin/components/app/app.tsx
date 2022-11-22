@@ -14,6 +14,7 @@ import { getAuthorizationStatus } from '../../../store/selectors/user-selector';
 import { redirectToRoute } from '../../../store/action';
 import NewsScreen from '../../screens/news-screen/news-screen';
 import ArticlesScreen from '../../screens/articles-screen/articles-screen';
+import TournamentsShow from '../../screens/tournaments-show/tournaments-show';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -33,6 +34,7 @@ function App(): JSX.Element {
           <Route path={AdminRoute.MAIN} element={<Navigate to={AdminRoute.TOURNAMENTS} />} />
 
           <Route path={AdminRoute.TOURNAMENTS} element={<TournamentsScreen />} />
+          <Route path={AdminRoute.TOURNAMENTS_SHOW} element={<TournamentsShow />} />
 
           <Route path={AdminRoute.NEWS} element={<NewsScreen />} />
 

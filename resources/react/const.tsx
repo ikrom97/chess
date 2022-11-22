@@ -35,7 +35,6 @@ export enum ApiRoute {
   TOURNAMENTS_SELECTED = '/api/tournaments/:slug',
 
   LOGIN = '/api/login',
-  ADMIN_TOURNAMENTS = '/api/admin/tournaments',
 }
 
 export enum SliceName {

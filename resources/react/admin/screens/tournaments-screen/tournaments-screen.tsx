@@ -121,7 +121,7 @@ function TournamentsScreen(): JSX.Element {
           {selectedItems.length > 0
             ?
             <Fragment>
-              <button className="warn" onClick={handleUnSelect}>Отменить выбор</button>
+              <button onClick={handleUnSelect}>Отменить выбор</button>
               <button className="error">Удалить выбранные ({selectedItems.length})</button>
             </Fragment>
             :
@@ -158,7 +158,7 @@ function TournamentsScreen(): JSX.Element {
         </thead>
 
         <tbody>
-          {tournaments.map(({ id, date, title, thumbImage }, i) => (
+          {tournaments.map(({ id, date, title, thumbImage, slug }, i) => (
             <tr key={id} tabIndex={0} onClick={handleItemClick(id)}>
               <td colSpan={1}>
                 <span>
@@ -185,7 +185,7 @@ function TournamentsScreen(): JSX.Element {
               </td>
 
               <td colSpan={3}>
-                <Link to={AdminRoute.TOURNAMENTS_SHOW} title="Редактировать">
+                <Link to={`${AdminRoute.TOURNAMENTS_SHOW}?slug=${slug}`} title="Редактировать">
                   <svg width={16} height={16}>
                     <use xlinkHref="#edit" />
                   </svg>
