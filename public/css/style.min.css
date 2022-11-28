@@ -434,22 +434,6 @@ a {
     max-width: 1312px;
   }
 }
-.page {
-  height: 100%;
-  font-size: 16px;
-  line-height: 1.4;
-  color: #1c1c1c;
-  font-family: "Segoe UI", "Arial", sans-serif;
-}
-.page::-webkit-scrollbar {
-  width: 8px;
-}
-.page::-webkit-scrollbar-track {
-  background-color: #e8e0c9;
-}
-.page::-webkit-scrollbar-thumb {
-  background-color: #ac7a30;
-}
 .page__body {
   min-height: 100%;
   overflow-x: clip;

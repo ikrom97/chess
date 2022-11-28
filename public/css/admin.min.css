@@ -66,6 +66,8 @@ a {
 }
 .form__element--image {
   grid-row: span 4;
+  color: #adadad;
+  text-align: center;
 }
 .form__field {
   position: absolute;
@@ -102,6 +104,10 @@ a {
 }
 .form__field[value=""]:focus {
   color: #adadad;
+}
+.form__field--image {
+  flex-direction: column;
+  justify-content: center;
 }
 .form__label {
   position: absolute;
@@ -149,6 +155,30 @@ a {
   box-shadow: none;
   color: #4478F2;
   background-color: transparent;
+}
+.form__upload-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #ccf5e8;
+  color: #29CC97;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.form__upload-text {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.form__upload-requirements {
+  font-size: 13px;
+}
+.form__image {
+  width: 300px;
+  height: 169px;
+  object-fit: contain;
 }
 .dashboard {
   position: fixed;

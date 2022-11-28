@@ -38,6 +38,9 @@
       <symbol id="check-all" viewBox="0 0 32 32" xml:space="preserve">
         <path fill="none" stroke="currentColor" stroke-width="3" stroke-miterlimit="10" d="M15 16h13M5 16l2 2 4-4M15 8h13M5 8l2 2 4-4M15 24h13M5 24l2 2 4-4" />
       </symbol>
+      <symbol id="upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+      </symbol>
     </svg>
   </div>
   <noscript>You need to enable JavaScript to run this app.</noscript>
