@@ -15,6 +15,6 @@ export type NewsData = {
   order: string;
   count: number;
   page: number;
-  keyword: string;
+  keyword?: string;
   onSuccess: (data: { news: News[], pagination: Pagination }) => void;
 }

@@ -15,8 +15,8 @@ function ArticlesPagination(): JSX.Element {
 
   useEffect(() => {
     dispatch(fetchArticles({
-      orderby: 'date',
-      ordertype: 'desc',
+      sort: 'date',
+      order: 'desc',
       count: 16,
       page: currentPage,
       onSuccess(data) {

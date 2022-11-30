@@ -17,6 +17,6 @@ export type ArticlesData = {
   order: string;
   count: number;
   page: number;
-  keyword: string;
+  keyword?: string;
   onSuccess: (data: { articles: Article[], pagination: Pagination }) => void;
 }

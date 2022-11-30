@@ -15,8 +15,8 @@ function NewsPagination(): JSX.Element {
 
   useEffect(() => {
     dispatch(fetchNews({
-      orderby: 'date',
-      ordertype: 'desc',
+      sort: 'date',
+      order: 'desc',
       count: 16,
       page: currentPage,
       onSuccess(data) {

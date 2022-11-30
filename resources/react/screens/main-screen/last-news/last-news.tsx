@@ -17,8 +17,8 @@ function LastNews(): JSX.Element {
   useEffect(() => {
     if (!isNewsLoaded) {
       dispatch(fetchNews({
-        orderby: 'date',
-        ordertype: 'desc',
+        sort: 'date',
+        order: 'desc',
         count: 10,
         page: 1,
         onSuccess(data) {
