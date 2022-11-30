@@ -4,8 +4,9 @@ import { DebounceInput } from 'react-debounce-input';
 import { Link } from 'react-router-dom';
 import { AdminRoute } from '../../../const';
 import { useAppDispatch } from '../../../hooks';
-import { fetchTournaments } from '../../../store/api-actions/tournaments-api-actions';
+import { deleteTournaments, fetchTournaments } from '../../../store/api-actions/tournaments-api-actions';
 import { Tournaments } from '../../../types/tournament';
+import Modal from '../../components/modal/modal';
 import Pagination from '../../components/pagination/pagination';
 
 function TournamentsScreen(): JSX.Element {
@@ -21,6 +22,8 @@ function TournamentsScreen(): JSX.Element {
   const [from, setFrom] = useState<number>(0);
   const [to, setTo] = useState<number>(0);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const [isModalActive, setIsModalActive] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<JSX.Element>(<div></div>);
 
   useEffect(() => {
     dispatch(fetchTournaments({
@@ -73,17 +76,15 @@ function TournamentsScreen(): JSX.Element {
   };
 
   const handleItemClick = (item: number) => (evt: BaseSyntheticEvent) => {
-    if (evt.target.tagName !== 'A' && evt.target.tagName !== 'BUTTON') {
-      const index = selectedItems.indexOf(item);
-      if (index > -1) {
-        evt.currentTarget.classList.remove('selected');
-        selectedItems.splice(index, 1);
-        setSelectedItems([...selectedItems]);
-        return;
-      }
-      evt.currentTarget.classList.add('selected');
-      setSelectedItems([...selectedItems, item]);
+    const index = selectedItems.indexOf(item);
+    if (index > -1) {
+      evt.currentTarget.classList.remove('selected');
+      selectedItems.splice(index, 1);
+      setSelectedItems([...selectedItems]);
+      return;
     }
+    evt.currentTarget.classList.add('selected');
+    setSelectedItems([...selectedItems, item]);
   };
 
   const handleSelectAll = (evt: BaseSyntheticEvent) => {
@@ -101,6 +102,157 @@ function TournamentsScreen(): JSX.Element {
   const handleUnSelect = () => {
     setSelectedItems([]);
     document.querySelectorAll('tr.selected').forEach((tr) => tr.removeAttribute('class'));
+  };
+
+  const handleDeleteAllClick = () => {
+    setModalContent(
+      <div>
+        <p>Вы уверены что хотите удалить все турниры?</p>
+        <br />
+        <br />
+        <div className="form__buttons">
+          <button
+            className="form__button"
+            type="button"
+            onClick={() => setIsModalActive(false)}
+          >
+            Отмена
+          </button>
+          <button
+            className="form__button form__button--error"
+            type="button"
+            onClick={() => dispatch(deleteTournaments({
+              ids: [],
+              onSuccess() {
+                setIsModalActive(false);
+                setSelectedItems([]);
+                dispatch(fetchTournaments({
+                  sort,
+                  order,
+                  count: itemsPerPage,
+                  page: currentPage,
+                  keyword,
+                  onSuccess(data) {
+                    setTournaments(data.tournaments);
+                    setTotalPages(data.pagination.lastPage);
+                    setTotalItems(data.pagination.total);
+                    setFrom(data.pagination.from);
+                    setTo(data.pagination.to);
+                  },
+                }));
+                document.querySelectorAll('th button.selected')
+                  .forEach((button) => button.removeAttribute('class'));
+              },
+            }))}
+          >
+            Удалить ({totalItems})
+          </button>
+        </div>
+      </div>
+    );
+    setIsModalActive(true);
+  };
+
+  const handleDeleteClick = (id: number) => (evt: BaseSyntheticEvent) => {
+    evt.stopPropagation();
+
+    setModalContent(
+      <div>
+        <p>Вы уверены что хотите удалить этот турнир?</p>
+        <br />
+        <br />
+        <div className="form__buttons">
+          <button
+            className="form__button"
+            type="button"
+            onClick={() => setIsModalActive(false)}
+          >
+            Отмена
+          </button>
+          <button
+            className="form__button form__button--error"
+            type="button"
+            onClick={() => dispatch(deleteTournaments({
+              ids: [id],
+              onSuccess() {
+                setIsModalActive(false);
+                setSelectedItems([]);
+                dispatch(fetchTournaments({
+                  sort,
+                  order,
+                  count: itemsPerPage,
+                  page: currentPage,
+                  keyword,
+                  onSuccess(data) {
+                    setTournaments(data.tournaments);
+                    setTotalPages(data.pagination.lastPage);
+                    setTotalItems(data.pagination.total);
+                    setFrom(data.pagination.from);
+                    setTo(data.pagination.to);
+                  },
+                }));
+                document.querySelectorAll('th button.selected')
+                  .forEach((button) => button.removeAttribute('class'));
+              },
+            }))}
+          >
+            Удалить
+          </button>
+        </div>
+      </div>
+    );
+
+    setIsModalActive(true);
+  };
+
+  const handleDeleteSelectedClick = () => {
+    setModalContent(
+      <div>
+        <p>Вы уверены что хотите удалить выбранные турниры?</p>
+        <br />
+        <br />
+        <div className="form__buttons">
+          <button
+            className="form__button"
+            type="button"
+            onClick={() => setIsModalActive(false)}
+          >
+            Отмена
+          </button>
+          <button
+            className="form__button form__button--error"
+            type="button"
+            onClick={() => dispatch(deleteTournaments({
+              ids: [...selectedItems],
+              onSuccess() {
+                setIsModalActive(false);
+                setSelectedItems([]);
+                dispatch(fetchTournaments({
+                  sort,
+                  order,
+                  count: itemsPerPage,
+                  page: currentPage,
+                  keyword,
+                  onSuccess(data) {
+                    setTournaments(data.tournaments);
+                    setTotalPages(data.pagination.lastPage);
+                    setTotalItems(data.pagination.total);
+                    setFrom(data.pagination.from);
+                    setTo(data.pagination.to);
+                  },
+                }));
+                document.querySelectorAll('th button.selected')
+                  .forEach((button) => button.removeAttribute('class'));
+              },
+            }))}
+          >
+            Удалить ({selectedItems.length})
+          </button>
+        </div>
+      </div>
+    );
+
+    setIsModalActive(true);
   };
 
   return (
@@ -122,10 +274,21 @@ function TournamentsScreen(): JSX.Element {
             ?
             <Fragment>
               <button onClick={handleUnSelect}>Отменить выбор</button>
-              <button className="error">Удалить выбранные ({selectedItems.length})</button>
+              <button
+                className="error"
+                onClick={handleDeleteSelectedClick}
+              >
+                Удалить выбранные ({selectedItems.length})
+              </button>
             </Fragment>
             :
-            !keyword.length && <button className="error">Удалить все ({totalItems})</button>}
+            !keyword.length && totalItems > 0 &&
+            <button
+              className="error"
+              onClick={handleDeleteAllClick}
+            >
+              Удалить все ({totalItems})
+            </button>}
         </caption>
 
         <thead>
@@ -179,7 +342,7 @@ function TournamentsScreen(): JSX.Element {
               <td colSpan={11}>{title}</td>
 
               <td colSpan={3}>
-                {dayjs(date).format('DDHH') > dayjs().format('DDHH')
+                {dayjs(date).format('YYYYMMDDHH') > dayjs().format('YYYYMMDDHH')
                   ? <span>Предстоящий</span>
                   : <span className="success">Завершенный</span>}
               </td>
@@ -190,7 +353,7 @@ function TournamentsScreen(): JSX.Element {
                     <use xlinkHref="#edit" />
                   </svg>
                 </Link>
-                <button title="Удалить">
+                <button title="Удалить" onClick={handleDeleteClick(id)}>
                   <svg width={16} height={16}>
                     <use xlinkHref="#delete" />
                   </svg>
@@ -226,7 +389,11 @@ function TournamentsScreen(): JSX.Element {
           </tr>
         </tfoot>
       </table>
-    </main >
+
+      <Modal isActive={isModalActive} setIsActive={setIsModalActive}>
+        {modalContent}
+      </Modal>
+    </main>
   );
 }
 

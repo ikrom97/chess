@@ -14,9 +14,9 @@ export const fetchNews = createAsyncThunk<
   { dispatch: AppDispatch, state: State, extra: AxiosInstance }
 >(
   'news/fetchNews',
-  async ({ orderby, ordertype, count, page, onSuccess }, { extra: api }) => {
+  async ({ sort, order, count, page, keyword, onSuccess }, { extra: api }) => {
     const { data } = await api.get(
-      `${ApiRoute.NEWS}?orderby=${orderby}&ordertype=${ordertype}&count=${count}&page=${page}`
+      `${ApiRoute.NEWS}?sort=${sort}&order=${order}&count=${count}&page=${page}&keyword=${keyword ?? ''}`
     );
 
     onSuccess({
@@ -39,3 +39,35 @@ export const fetchNewsBySlug = createAsyncThunk<
     }
     );
 
+export const storeNews = createAsyncThunk<
+  void,
+  { form: FormData, onSuccess: () => void },
+  { dispatch: AppDispatch, state: State, extra: AxiosInstance }
+    >(
+    'news/storeNews',
+    async ({ form, onSuccess }, { extra: api }) => {
+      await api.post(ApiRoute.NEWS, form);
+      onSuccess();
+    });
+
+export const updateNews = createAsyncThunk<
+  void,
+  { form: FormData, onSuccess: (updatedNews: News) => void },
+  { dispatch: AppDispatch, state: State, extra: AxiosInstance }
+    >(
+    'news/updateNews',
+    async ({ form, onSuccess }, { extra: api }) => {
+      const { data } = await api.post('/api/news/update', form);
+      onSuccess(adaptNewsToClient(data.news));
+    });
+
+export const deleteNews = createAsyncThunk<
+  void,
+  { ids: number[], onSuccess: () => void; },
+  { dispatch: AppDispatch, state: State, extra: AxiosInstance }
+    >(
+    'news/deleteNews',
+    async ({ ids, onSuccess }, { extra: api }) => {
+      await api.post('/api/news/delete', { ids });
+      onSuccess();
+    });

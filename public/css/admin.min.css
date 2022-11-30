@@ -45,15 +45,20 @@ a {
   border-radius: 8px;
   background-color: #FFFFFF;
   padding: 40px 56px;
-  display: grid;
-  grid-template-columns: 340px 340px;
-  grid-auto-rows: 48px;
-  gap: 32px;
   box-shadow: 0 8px 16px #ebebeb;
-  align-self: center;
   margin: 0 auto;
 }
-.form--small {
+.form--login {
+  margin: auto;
+}
+.form__grid {
+  display: grid;
+  grid-template-columns: 340px 340px;
+  gap: 32px;
+  grid-auto-rows: 48px;
+  align-self: center;
+}
+.form__grid--small {
   grid-template-columns: 340px;
 }
 .form__element {
@@ -136,6 +141,9 @@ a {
   display: flex;
   justify-content: center;
 }
+.form__buttons *:not(:last-child) {
+  margin-right: 24px;
+}
 .form__button {
   display: flex;
   justify-content: center;
@@ -155,6 +163,13 @@ a {
   box-shadow: none;
   color: #4478F2;
   background-color: transparent;
+}
+.form__button--error {
+  background-color: #FE7033;
+  border: 2px solid #FE7033;
+}
+.form__button--error:hover {
+  color: #FE7033;
 }
 .form__upload-icon {
   display: flex;
@@ -179,6 +194,17 @@ a {
   width: 300px;
   height: 169px;
   object-fit: contain;
+}
+.form__text-editor {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  max-width: 712px;
+}
+.form__editor-label {
+  color: #adadad;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 4px;
 }
 .dashboard {
   position: fixed;
@@ -690,6 +716,29 @@ table tfoot tr td select:focus {
 .pagination__item--disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+.modal--active {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal__content {
+  padding: 40px 56px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
 }
 
 

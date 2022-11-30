@@ -21,7 +21,7 @@ function TournamentsSelectedScreen(): JSX.Element {
     slug: '',
   });
 
-  const isUpcoming = dayjs(tournament?.date).format('DH') > dayjs().format('DH');
+  const isUpcoming = dayjs(tournament.date).format('YYYYMMDDHH') > dayjs().format('YYYYMMDDHH');
 
   useEffect(() => {
     slug && dispatch(fetchTournamentBySlug({ slug, onSuccess: setTournament }));

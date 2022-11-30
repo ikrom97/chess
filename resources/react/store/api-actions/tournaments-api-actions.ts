@@ -1,4 +1,4 @@
-import { Tournaments, TournamentsData, TournamentData } from './../../types/tournament';
+import { Tournaments, TournamentsData, TournamentData, Tournament } from './../../types/tournament';
 import { generatePath } from 'react-router-dom';
 import { AxiosInstance } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
@@ -70,3 +70,36 @@ export const fetchTournamentBySlug = createAsyncThunk<
     const tournament = adaptTournamentToClient(data);
     onSuccess(tournament);
   });
+
+export const storeTournament = createAsyncThunk<
+  void,
+  { form: FormData, onSuccess: (newTournament: Tournament) => void },
+  { dispatch: AppDispatch, state: State, extra: AxiosInstance }
+    >(
+    'tournaments/storeTournament',
+    async ({ form, onSuccess }, { extra: api }) => {
+      const {data} = await api.post(ApiRoute.TOURNAMENTS, form);
+      onSuccess(adaptTournamentToClient(data.tournament));
+    });
+
+export const updateTournament = createAsyncThunk<
+  void,
+  { form: FormData, onSuccess: (updatedTournament: Tournament) => void },
+  { dispatch: AppDispatch, state: State, extra: AxiosInstance }
+    >(
+    'tournaments/updateTournament',
+    async ({ form, onSuccess }, { extra: api }) => {
+      const {data} = await api.post('/api/tournaments/update', form);
+      onSuccess(adaptTournamentToClient(data.tournament));
+    });
+
+export const deleteTournaments = createAsyncThunk<
+  void,
+  { ids: number[], onSuccess: () => void; },
+  { dispatch: AppDispatch, state: State, extra: AxiosInstance }
+    >(
+    'tournaments/deleteTournaments',
+    async ({ ids, onSuccess }, { extra: api }) => {
+      await api.post('/api/tournaments/delete', { ids });
+      onSuccess();
+    });

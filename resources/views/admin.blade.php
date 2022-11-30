@@ -7,7 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
+
   <title>Федерация шахмат Таджикистана</title>
+
   <link rel="icon" href="{{ asset('favicon.ico') }}">
   <link rel="icon" href="{{ asset('images/icons/favicon.svg') }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ mix('css/admin.min.css') }}">

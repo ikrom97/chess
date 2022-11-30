@@ -15,6 +15,7 @@ import { redirectToRoute } from '../../../store/action';
 import NewsScreen from '../../screens/news-screen/news-screen';
 import ArticlesScreen from '../../screens/articles-screen/articles-screen';
 import TournamentsShow from '../../screens/tournaments-show/tournaments-show';
+import NewsShow from '../../screens/news-show/news-show';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -37,6 +38,7 @@ function App(): JSX.Element {
           <Route path={AdminRoute.TOURNAMENTS_SHOW} element={<TournamentsShow />} />
 
           <Route path={AdminRoute.NEWS} element={<NewsScreen />} />
+          <Route path={AdminRoute.NEWS_SHOW} element={<NewsShow />} />
 
           <Route path={AdminRoute.ARTICLES} element={<ArticlesScreen />} />
         </Route>

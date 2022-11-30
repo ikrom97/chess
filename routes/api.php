@@ -22,11 +22,17 @@ Route::get('articles', [ArticleController::class, 'index']);
 Route::get('articles/{slug}', [ArticleController::class, 'show']);
 
 Route::get('news', [NewsController::class, 'index']);
+Route::post('news', [NewsController::class, 'store']);
+Route::post('news/update', [NewsController::class, 'update']);
+Route::post('news/delete', [NewsController::class, 'delete']);
 Route::get('news/{slug}', [NewsController::class, 'show']);
 
 Route::get('players', [PlayersController::class, 'index']);
 
 Route::get('tournaments', [TournamentController::class, 'index']);
+Route::post('tournaments', [TournamentController::class, 'store']);
+Route::post('tournaments/update', [TournamentController::class, 'update']);
+Route::post('tournaments/delete', [TournamentController::class, 'delete']);
 Route::get('tournaments/upcoming', [TournamentController::class, 'upcoming']);
 Route::get('tournaments/previous', [TournamentController::class, 'previous']);
 Route::get('tournaments/{slug}', [TournamentController::class, 'show']);

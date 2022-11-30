@@ -9037,6 +9037,11 @@
   optionalDependencies:
     "fsevents" "^2.3.2"
 
+"react-simple-wysiwyg@^2.1.1":
+  "integrity" "sha512-r3hCWI9g/tpUeKFZFWfpxZwzYzEklsw2i0BU5XcQ71o0fCSE09OCruzosf4J2HFDrkvQC0PE5KWsGorchF/9Bw=="
+  "resolved" "https://registry.npmjs.org/react-simple-wysiwyg/-/react-simple-wysiwyg-2.1.1.tgz"
+  "version" "2.1.1"
+
 "react-toastify@9.1.1":
   "integrity" "sha512-pkFCla1z3ve045qvjEmn2xOJOy4ZciwRXm1oMPULVkELi5aJdHCN/FHnuqXq8IwGDLB7PPk2/J6uP9D8ejuiRw=="
   "resolved" "https://registry.npmjs.org/react-toastify/-/react-toastify-9.1.1.tgz"
