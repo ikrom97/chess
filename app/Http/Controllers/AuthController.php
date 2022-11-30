@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -14,7 +15,10 @@ class AuthController extends Controller
    *
    * @return void
    */
-
+  public function __construct(JWTAuth $jwtAuth)
+  {
+    $this->jwtAuth = $jwtAuth;
+  }
   /**
    * Get auth status
    *
