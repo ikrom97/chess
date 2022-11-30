@@ -13,9 +13,10 @@ export type Article = {
 export type Articles = Article[]
 
 export type ArticlesData = {
-  orderby: string;
-  ordertype: string;
+  sort: string;
+  order: string;
   count: number;
   page: number;
+  keyword: string;
   onSuccess: (data: { articles: Article[], pagination: Pagination }) => void;
 }

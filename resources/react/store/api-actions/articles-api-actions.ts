@@ -13,9 +13,9 @@ export const fetchArticles = createAsyncThunk<
   { dispatch: AppDispatch, state: State, extra: AxiosInstance }
 >(
   'articles/fetchArticles',
-  async ({ orderby, ordertype, count, page, onSuccess }, { extra: api }) => {
+  async ({ sort, order, count, page, keyword, onSuccess }, { extra: api }) => {
     const { data } = await api.get(
-      `${ApiRoute.ARTICLES}?orderby=${orderby}&ordertype=${ordertype}&count=${count}&page=${page}`
+      `${ApiRoute.ARTICLES}?sort=${sort}&order=${order}&count=${count}&page=${page}&keyword=${keyword ?? ''}`
     );
 
     onSuccess({
@@ -37,3 +37,37 @@ export const fetchArticleBySlug = createAsyncThunk<
       onSuccess(article);
     }
     );
+
+export const storeArticle = createAsyncThunk<
+  void,
+  { form: FormData, onSuccess: () => void },
+  { dispatch: AppDispatch, state: State, extra: AxiosInstance }
+    >(
+    'articles/storeArticle',
+    async ({ form, onSuccess }, { extra: api }) => {
+      await api.post(ApiRoute.ARTICLES, form);
+      onSuccess();
+    });
+
+export const updateArticle = createAsyncThunk<
+  void,
+  { form: FormData, onSuccess: (updatedArticle: Article) => void },
+  { dispatch: AppDispatch, state: State, extra: AxiosInstance }
+    >(
+    'articles/updateArticle',
+    async ({ form, onSuccess }, { extra: api }) => {
+      const { data } = await api.post('/api/articles/update', form);
+      onSuccess(adaptArticleToClient(data.article));
+    });
+
+export const deleteArticles = createAsyncThunk<
+  void,
+  { ids: number[], onSuccess: () => void; },
+  { dispatch: AppDispatch, state: State, extra: AxiosInstance }
+    >(
+    'articles/deleteArticle',
+    async ({ ids, onSuccess }, { extra: api }) => {
+      await api.post('/api/articles/delete', { ids });
+      onSuccess();
+    });
+

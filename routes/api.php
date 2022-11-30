@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('articles', [ArticleController::class, 'index']);
+Route::post('articles', [ArticleController::class, 'store']);
+Route::post('articles/update', [ArticleController::class, 'update']);
+Route::post('articles/delete', [ArticleController::class, 'delete']);
 Route::get('articles/{slug}', [ArticleController::class, 'show']);
 
 Route::get('news', [NewsController::class, 'index']);

@@ -16,6 +16,7 @@ import NewsScreen from '../../screens/news-screen/news-screen';
 import ArticlesScreen from '../../screens/articles-screen/articles-screen';
 import TournamentsShow from '../../screens/tournaments-show/tournaments-show';
 import NewsShow from '../../screens/news-show/news-show';
+import ArticlesShow from '../../screens/articles-show/articles-show';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -41,6 +42,7 @@ function App(): JSX.Element {
           <Route path={AdminRoute.NEWS_SHOW} element={<NewsShow />} />
 
           <Route path={AdminRoute.ARTICLES} element={<ArticlesScreen />} />
+          <Route path={AdminRoute.ARTICLES_SHOW} element={<ArticlesShow />} />
         </Route>
 
         <Route path={AdminRoute.LOGIN} element={<LoginScreen />} />
