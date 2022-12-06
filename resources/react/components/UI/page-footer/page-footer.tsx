@@ -9,34 +9,34 @@ function PageFooter(): JSX.Element {
 
           <ul className="page-footer__links-list">
             <li className="page-footer__links-item">
-              <Link to="#">Президент Республики Таджикистан</Link>
+              <a href="http://president.tj/" target="blank">Президент Республики Таджикистан</a>
             </li>
             <li className="page-footer__links-item">
-              <Link to="#">Федерация Футбола Таджикистана</Link>
+              <a href="https://fft.tj/" target="blank">Федерация Футбола Таджикистана</a>
             </li>
             <li className="page-footer__links-item">
-              <Link to="#">World Chess Federation</Link>
+              <a href="https://www.fide.com/" target="blank">World Chess Federation</a>
             </li>
             <li className="page-footer__links-item">
-              <Link to="#">Шахматные турниры</Link>
+              <a href="https://chessok.net/chess_news/" target="blank">Шахматные турниры</a>
             </li>
             <li className="page-footer__links-item">
-              <Link to="#">ChessPro</Link>
+              <a href="https://chesspro.ru/" target="blank">ChessPro</a>
             </li>
             <li className="page-footer__links-item">
-              <Link to="#">Олимпийский Комитет Республики Таджикистан</Link>
+              <a href="http://www.olympic.tj/" target="blank">Олимпийский Комитет Республики Таджикистан</a>
             </li>
             <li className="page-footer__links-item">
-              <Link to="#">Варзиш-Спорт</Link>
+              <a href="http://www.varzish-sport.tj/" target="blank">Варзиш-Спорт</a>
             </li>
             <li className="page-footer__links-item">
-              <Link to="#">Новости шахмата</Link>
+              <a href="http://chess-news.ru/" target="blank">Новости шахмата</a>
             </li>
             <li className="page-footer__links-item">
-              <Link to="#">Шахматы на Евроспорте</Link>
+              <a href="http://www.eurosport.ru/chess/" target="blank">Шахматы на Евроспорте</a>
             </li>
             <li className="page-footer__links-item">
-              <Link to="#">Сrestbook</Link>
+              <a href="https://www.crestbook.com/" target="blank">Сrestbook</a>
             </li>
           </ul>
         </section>
