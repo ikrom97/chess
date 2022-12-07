@@ -6,9 +6,21 @@
   <base href="/">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
 
   <title>Федерация шахмат Таджикистана</title>
+
+  <meta name="keywords" content="Федерация шахмат Таджикистана, ФШТ" />
+  <meta property="og:site_name" content="Федерация шахмат Таджикистана">
+  <meta property="og:type" content="object" />
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="description" content="Федерация шахмат Таджикистана была образована в 1992 году. В том же году она стала одной из первых среди спортивных федераций независимого Таджикистана, удостоилась возможности стать членом Международной федерации шахмат.">
+  <meta property="og:description" content="Федерация шахмат Таджикистана была образована в 1992 году. В том же году она стала одной из первых среди спортивных федераций независимого Таджикистана, удостоилась возможности стать членом Международной федерации шахмат.">
+  <meta property="og:title" content="Федерация шахмат Таджикистана" />
+  <meta property="og:image" content="{{ asset('images/icons/favicon.svg') }}">
+  <meta property="og:image:alt" content="Федерация шахмат Таджикистана – Лого">
+  <meta name="twitter:title" content="Федерация шахмат Таджикистана">
+  <meta name="twitter:image" content="{{ asset('images/icons/favicon.svg') }}">
 
   <link rel="icon" href="{{ asset('favicon.ico') }}">
   <link rel="icon" href="{{ asset('images/icons/favicon.svg') }}" type="image/svg+xml">

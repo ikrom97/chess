@@ -1,5 +1,4 @@
 import dayjs from 'dayjs';
-import parse from 'html-react-parser';
 import { generatePath, Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { Tournament } from '../../types/tournament';
@@ -30,7 +29,7 @@ function TournamentCard({ tournament, isNew }: TournamentProps): JSX.Element {
 
         <h3 className="tournaments-card__title">{title}</h3>
 
-        <div className="tournaments-card__description">{parse(content)}</div>
+        <div className="tournaments-card__description">{content.replace(/(<([^>]+)>)/ig, '')}</div>
 
         <Link
           className="tournaments-card__more"

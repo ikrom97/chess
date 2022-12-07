@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ticket;
 use App\Models\Tournament;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use DateTime;
@@ -72,15 +71,6 @@ class TournamentController extends Controller
     $tournament->content = $request->content;
     $save = $tournament->save();
 
-    $ticket = new Ticket();
-    $ticket->address = $request->address;
-    $ticket->tel_1 = $request->tel_1;
-    $ticket->tel_2 = $request->tel_2;
-    $ticket->email_1 = $request->email_1;
-    $ticket->email_2 = $request->email_2;
-    $ticket->tournament_id = $tournament->id;
-    $ticket->save();
-
     if ($save) {
       return response([
         'message' => 'Данные успешно сохранены',
@@ -116,14 +106,6 @@ class TournamentController extends Controller
     $tournament->content = $request->content;
     $update = $tournament->update();
 
-    $ticket = Ticket::where('tournament_id', $tournament->id)->first();
-    $ticket->address = $request->address;
-    $ticket->tel_1 = $request->tel_1;
-    $ticket->tel_2 = $request->tel_2;
-    $ticket->email_1 = $request->email_1;
-    $ticket->email_2 = $request->email_2;
-    $ticket->update();
-
     if ($update) {
       return response([
         'message' => 'Данные успешно сохранены',
@@ -141,9 +123,6 @@ class TournamentController extends Controller
 
       foreach ($tournaments as $tournament) {
         file_exists($tournament->image) &&  unlink($tournament->image);
-
-        $ticket = Ticket::where('tournament_id', $tournament->id)->first();
-        $ticket->delete();
         $tournament->delete();
       }
     }
@@ -152,9 +131,6 @@ class TournamentController extends Controller
       foreach ($request->ids as $id) {
         $tournament = Tournament::find($id);
         file_exists($tournament->image) &&  unlink($tournament->image);
-
-        $ticket = Ticket::where('tournament_id', $tournament->id)->first();
-        $ticket->delete();
         $tournament->delete();
       }
       return response(['message' => 'Данные успешно удалены'], 200);
