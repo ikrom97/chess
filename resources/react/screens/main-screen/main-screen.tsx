@@ -20,9 +20,7 @@ function MainScreen(): JSX.Element {
         </h2>
 
         <p className="history-section__description">
-          Федерация шахмат Таджикистана была образована в 1992 году и в том же году,
-          стала одной из первых среди спортивных федераций независимого Таджикистана,
-          стала членом Международной федерации своего вида спорта.
+          Федерация шахмат Таджикистана была образована в 1992 году. В том же году она стала одной из первых среди спортивных федераций независимого Таджикистана, удостоилась возможности стать членом Международной федерации шахмат.
         </p>
 
         <Link className="history-section__button button" to={AppRoute.ABOUT}>
@@ -42,10 +40,7 @@ function MainScreen(): JSX.Element {
         </h2>
 
         <p className="tournaments-section__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fames tincidunt
-          sociis facilisi ac euismod pulvinar bibendum adipiscing. Eget sodales
-          gravida viverra sed morbi elementum laoreet. Cum fringilla sodales vel
-          congue mattis quis est mauris, nunc.
+          На регулярной основе Федерация шахмат Таджикистана проводит турниры среди начинающих и опытных шахматистов страны, стараясь охватывать самый широкий пласт спортсменов. Подобного рода мероприятия помогают развитию шахмат и увеличивают интерес к этой интеллектуальной игре.
         </p>
 
         <Link className="tournaments-section__button button" to={AppRoute.TOURNAMENTS}>
@@ -65,10 +60,7 @@ function MainScreen(): JSX.Element {
         </h2>
 
         <p className="ratings-section__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames tincidunt
-          sociis facilisi ac euismod pulvinar bibendum adipiscing. Eget sodales
-          gravida viverra sed morbi elementum laoreet. Cumfringilla sodales vel
-          congue mattis quis est mauris, nunc.
+          Шахматный рейтинг ФИДЕ от Международной шахматной федерации составляется ежемесячно. Топ лучших игроков основан на системе рейтинга Эло. Он вычисляется по результатам игр шахматистов друг с другом. Система рейтингов делит шахматистов на 9 классов: высший класс начинается с рейтинга 2600, низший – 1200 и ниже.
         </p>
 
         <Link className="ratings-section__button button" to={AppRoute.RATINGS}>
@@ -88,10 +80,7 @@ function MainScreen(): JSX.Element {
         </h2>
 
         <p className="news-section__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames tincidunt
-          sociis facilisi ac euismod pulvinar bibendum adipiscing. Eget sodales
-          gravida viverra sed morbi elementum laoreet. Cum fringilla sodales vel
-          congue mattis quis est mauris, nunc.
+          В данном разделе представлены все актуальные новости Федерации Шахмат Таджикистана, а также мировые знаковые события в области шахмат. Результаты турниров, новые звезды, претенденты на звание лучших – все это вы можете узнать на нашем сайте.
         </p>
 
         <Link className="news-section__button button" to={AppRoute.NEWS}>
@@ -99,13 +88,6 @@ function MainScreen(): JSX.Element {
         </Link>
 
         <LastNews />
-
-        <p className="news-section__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames tincidunt
-          sociis facilisi ac euismod pulvinar bibendum adipiscing. Eget sodales
-          gravida viverra sed morbi elementum laoreet. Cum fringilla sodales vel
-          congue mattis quis est mauris, nunc.
-        </p>
       </section>
     </main>
   );

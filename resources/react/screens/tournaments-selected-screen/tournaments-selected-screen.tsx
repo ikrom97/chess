@@ -11,21 +11,17 @@ function TournamentsSelectedScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const params = useParams();
   const slug = params.slug;
-  const [tournament, setTournament] = useState<Tournament>({
-    id: 0,
-    image: '',
-    thumbImage: '',
-    date: '',
-    title: '',
-    content: '',
-    slug: '',
-  });
+  const [tournament, setTournament] = useState<Tournament | null>(null);
 
-  const isUpcoming = dayjs(tournament.date).format('YYYYMMDDHH') > dayjs().format('YYYYMMDDHH');
+  const isUpcoming = dayjs(tournament?.date).format('YYYYMMDDHH') > dayjs().format('YYYYMMDDHH');
 
   useEffect(() => {
     slug && dispatch(fetchTournamentBySlug({ slug, onSuccess: setTournament }));
   }, [dispatch, slug]);
+
+  if (!tournament) {
+    return <div></div>;
+  }
 
   return isUpcoming
     ?

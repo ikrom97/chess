@@ -26,10 +26,7 @@ function TournamentsScreen(): JSX.Element {
           <h2 className="upcoming-tournaments__title">Предстоящие турниры</h2>
 
           <p className="upcoming-tournaments__description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames tincidunt sociis
-            facilisi ac euismod pulvinar bibendum adipiscing. Eget sodales gravida viverra sed
-            morbi elementum laoreet. Cum fringilla sodales vel congue mattis quis est mauris,
-            nunc.
+            Для увеличения интереса к шахматам как среди подрастающего поколения, так и среди взрослых людей, Федерация шахмат Таджикистана планирует и дальше проводить турниры и другие мероприятия. Это позволит постоянно развиваться, повышать уровень игроков для дальнейшего участия в Международных турнирах.
           </p>
 
           <UpcomingTournaments />
@@ -39,10 +36,7 @@ function TournamentsScreen(): JSX.Element {
         <h2 className="previous-tournaments__title">Предыдущие турниры</h2>
 
         <p className="previous-tournaments__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames tincidunt sociis
-          facilisi ac euismod pulvinar bibendum adipiscing. Eget sodales gravida viverra sed
-          morbi elementum laoreet. Cum fringilla sodales vel congue mattis quis est mauris,
-          nunc.
+          На регулярной основе Федерация шахмат Таджикистана проводит турниры среди начинающих и опытных шахматистов страны, стараясь охватывать самый широкий пласт спортсменов. Подобного рода мероприятия помогают развитию шахмат и увеличивают интерес к этой интеллектуальной игре.
         </p>
 
         <TournamentsPagination />

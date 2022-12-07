@@ -18,12 +18,10 @@ function RatingsScreen(): JSX.Element {
       <h1 className="ratings-screen__title">Рейтинг</h1>
 
       <p className="ratings-screen__description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames tincidunt sociis facilisi
-        ac euismod pulvinar bibendum adipiscing. Eget sodales gravida viverra sed morbi
-        elementum laoreet. Cum fringilla sodales vel congue mattis quis est mauris, nunc.
+        Шахматный рейтинг ФИДЕ от Международной шахматной федерации составляется ежемесячно. Топ лучших игроков основан на системе рейтинга Эло. Он вычисляется по результатам игр шахматистов друг с другом. Система рейтингов делит шахматистов на 9 классов: высший класс начинается с рейтинга 2600, низший – 1200 и ниже.
       </p>
 
-      <form className="ratings-screen__search-form search-form">
+      <form className="ratings-screen__search-form search-form" onSubmit={(evt) => evt.preventDefault()}>
         <label className="search-form__label">
           <DebounceInput
             className="search-form__input"

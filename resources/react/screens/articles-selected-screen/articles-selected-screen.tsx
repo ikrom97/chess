@@ -17,6 +17,10 @@ function ArticlesSelectedScreen(): JSX.Element {
     slug && dispatch(fetchArticleBySlug({ slug, onSuccess: setArticle }));
   }, [dispatch, slug]);
 
+  if (!article) {
+    return <div></div>;
+  }
+
   return (
     <main className="articles-selected-screen container">
       <h1 className="articles-selected-screen__category">Статьи</h1>

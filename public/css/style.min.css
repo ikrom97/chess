@@ -1397,6 +1397,12 @@ a {
 .news-card__description *:first-child {
   margin-top: 0;
 }
+.news-card__description * {
+  font-weight: 400;
+}
+.news-card__description img {
+  display: none;
+}
 .news-card__button {
   display: flex;
   justify-content: center;

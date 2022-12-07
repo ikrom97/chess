@@ -4,9 +4,7 @@ function ContactsScreen(): JSX.Element {
       <h1 className="contacts-screen__title">Контакты</h1>
 
       <p className="contacts-screen__description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames tincidunt sociis facilisi
-        ac euismod pulvinar bibendum adipiscing. Eget sodales gravida viverra sed morbi elementum
-        laoreet. Cum fringilla sodales vel congue mattis quis est mauris, nunc.
+        Для связи с нами, предложений и пожеланий, а также для более оперативного получения информации о деятельности Федерации шахмат Таджикистана представляем контактные номера и электронную почту. Наши двери в Душанбе всегда открыты для новых идей.
       </p>
 
       <dl className="contacts-screen__details details">
@@ -22,7 +20,7 @@ function ContactsScreen(): JSX.Element {
 
           <dd className="details__definition">
             734000, Республика Таджикистан, <br />
-            ул. Шамси 4 «Б»
+            г. Душанбе, ул. Шамси 4Б
           </dd>
         </div>
 

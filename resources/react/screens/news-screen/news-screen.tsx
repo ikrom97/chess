@@ -6,9 +6,7 @@ function NewsScreen(): JSX.Element {
       <h1 className="news-screen__title">Новости</h1>
 
       <p className="news-screen__description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames tincidunt sociis facilisi ac
-        euismod pulvinar bibendum adipiscing. Eget sodales gravida viverra sed morbi
-        elementum laoreet. Cum fringilla sodales vel congue mattis quis est mauris, nunc.
+        В данном разделе представлены все актуальные новости Федерации Шахмат Таджикистана, а также мировые знаковые события в области шахмат. Результаты турниров, новые звезды, претенденты на звание лучших – все это вы можете узнать на нашем сайте.
       </p>
 
       <NewsPagination />

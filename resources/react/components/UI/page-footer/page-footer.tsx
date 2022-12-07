@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 
 function PageFooter(): JSX.Element {
@@ -30,7 +31,7 @@ function PageFooter(): JSX.Element {
               <a href="http://www.varzish-sport.tj/" target="blank">Варзиш-Спорт</a>
             </li>
             <li className="page-footer__links-item">
-              <a href="http://chess-news.ru/" target="blank">Новости шахмата</a>
+              <a href="http://chess-news.ru/" target="blank">Шахматные новости</a>
             </li>
             <li className="page-footer__links-item">
               <a href="http://www.eurosport.ru/chess/" target="blank">Шахматы на Евроспорте</a>
@@ -48,7 +49,7 @@ function PageFooter(): JSX.Element {
                 <use xlinkHref="#location" />
               </svg>
             </span>
-            <p>734000, Республика Таджикистан, <br /> ул. Шамси 4 «Б»</p>
+            <p>734000, Республика Таджикистан, <br /> г. Душанбе, ул. Шамси 4Б</p>
           </Link>
 
           <div className="page-footer__detail">
@@ -77,7 +78,7 @@ function PageFooter(): JSX.Element {
         </div>
       </div>
 
-      <p className="page-footer__copyright">2022© Все права защищены</p>
+      <p className="page-footer__copyright">{dayjs().format('YYYY')}© Все права защищены</p>
     </footer>
   );
 }

@@ -1,7 +1,6 @@
 import { generatePath, Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { News } from '../../types/news';
-import parse from 'html-react-parser';
 import dayjs from 'dayjs';
 
 type NewsCardProps = {
@@ -29,7 +28,7 @@ function NewsCard({ news }: NewsCardProps): JSX.Element {
 
         <h3 className="news-card__title">{title}</h3>
 
-        <div className="news-card__description">{parse(content)}</div>
+        <div className="news-card__description">{content.replace(/(<([^>]+)>)/ig, '')}</div>
 
         <Link
           className="news-card__button button"

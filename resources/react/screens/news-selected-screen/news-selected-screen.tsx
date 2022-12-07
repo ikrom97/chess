@@ -17,6 +17,10 @@ function NewsSelectedScreen(): JSX.Element {
     slug && dispatch(fetchNewsBySlug({ slug, onSuccess: setNews }));
   }, [dispatch, slug]);
 
+  if (!news) {
+    return <div></div>;
+  }
+
   return (
     <main className="news-selected-screen container">
       <h1 className="news-selected-screen__category">Новости</h1>
