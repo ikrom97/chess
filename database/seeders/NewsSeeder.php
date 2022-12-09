@@ -10367,6 +10367,7 @@ WFM –женский мастер ФИДЕ
           'thumb_image' => 'https://tjchess.tj/wp-content/uploads/' . $image->meta_value ?? '',
           'date' => $post['post_modified'],
           'title' => $post['post_title'],
+          'slug' => $post['post_name'],
           'content' => $post['post_content'],
         ]);
       }

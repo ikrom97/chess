@@ -41,6 +41,27 @@ function AboutScreen(): JSX.Element {
             <p>Новым руководителем Федерации шахмат Таджикистана избран Зафар Мирзо. Он возглавлял федерацию в 2007-2014 годах, а при Давлатали Саиде был вице-президентом этой организации.</p>
           </div>
         </div>
+
+        <ul className="about-navigation">
+          <li className="about-navigation__item">
+            <Link className="about-navigation__link" to={AppRoute.MAIN}>Главная</Link>
+          </li>
+          <li className="about-navigation__item">
+            <Link className="about-navigation__link" to={AppRoute.NEWS}>Новости</Link>
+          </li>
+          <li className="about-navigation__item">
+            <Link className="about-navigation__link" to={AppRoute.TOURNAMENTS}>Турниры</Link>
+          </li>
+          <li className="about-navigation__item">
+            <Link className="about-navigation__link" to={AppRoute.RATINGS}>Рейтинг</Link>
+          </li>
+          <li className="about-navigation__item">
+            <Link className="about-navigation__link" to={AppRoute.ARTICLES}>Статьи</Link>
+          </li>
+          <li className="about-navigation__item">
+            <Link className="about-navigation__link" to={AppRoute.CONTACTS}>Контакты</Link>
+          </li>
+        </ul>
       </main>
 
       <PageFooter />
