@@ -4,7 +4,7 @@ function ContactsScreen(): JSX.Element {
       <h1 className="contacts-screen__title">Контакты</h1>
 
       <p className="contacts-screen__description">
-        Для связи с нами, предложений и пожеланий, а также для более оперативного получения информации о деятельности Федерации шахмат Таджикистана представляем контактные номера и электронную почту. Наши двери в Душанбе всегда открыты для новых идей.
+        Для связи с нами, предложений и пожеланий, а также для более оперативного получения информации о деятельности Федерации шахмат Таджикистана представляем контактные номера и электронную почту.
       </p>
 
       <dl className="contacts-screen__details details">
@@ -49,7 +49,6 @@ function ContactsScreen(): JSX.Element {
           </dt>
 
           <dd className="details__definition">info@tjchess.tj</dd>
-          <dd className="details__definition">marketing@tjchess.tj</dd>
         </div>
       </dl>
 

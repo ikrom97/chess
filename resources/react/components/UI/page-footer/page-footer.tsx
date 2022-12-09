@@ -72,7 +72,6 @@ function PageFooter(): JSX.Element {
             </span>
             <p>
               <a href="mailto:info@tjchess.tj">info@tjchess.tj</a> <br />
-              <a href="mailto:marketing@tjchess.tj">marketing@tjchess.tj</a>
             </p>
           </div>
         </div>
